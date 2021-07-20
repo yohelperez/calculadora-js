@@ -14,15 +14,41 @@ keyboard.addEventListener('click', function(event){
 });
 */
 
+//Creates the listener on the keyboard
 keyboard.addEventListener('click', function(event) {
   keyPressed(event);
 });
 
-function keyPressed() {
+//Function called every time a key is pressed
+function keyPressed(event) {
   console.log(`You clicked on ${event.target.innerText}`);
   if (!isNaN(parseInt(event.target.innerHTML))) {
-    screen.innerHTML += event.target.innerHTML;
+    writeNumbers(event.target.innerHTML);
+  } else {
+    let key = event.target.innerHTML;
+    switch (key) {
+      case 'C':
+        clearAll();
+        break;
+
+      case '←':
+        clear();
+        break;
+    }
   }
 }
 
-function writeNumbers() {}
+//Writes numbers on the screen
+function writeNumbers(number) {
+  screen.innerHTML += number;
+}
+
+//Clears the whole screen
+function clearAll() {
+  screen.innerHTML = '';
+}
+
+//Clears one number
+function clear() {
+  screen.innerHTML = screen.innerHTML.slice(0, -1);
+}
