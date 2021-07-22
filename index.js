@@ -7,6 +7,8 @@ appDiv.innerHTML = `<h1>JS Starter: This is fun :)</h1>`;
 
 const keyboard = document.getElementById('keyboard');
 const screen = document.getElementById('screen');
+let operation = '';
+let restult = 0;
 
 /*
 keyboard.addEventListener('click', function(event){
@@ -25,14 +27,34 @@ function keyPressed(event) {
   if (!isNaN(parseInt(event.target.innerHTML))) {
     writeNumbers(event.target.innerHTML);
   } else {
-    let key = event.target.innerHTML;
+    let key = event.target.id;
     switch (key) {
-      case 'C':
+      case 'clearAll':
         clearAll();
         break;
 
-      case '←':
+      case 'clear':
         clear();
+        break;
+
+      case 'division':
+        operation = key;
+        break;
+
+      case 'multiplication':
+        operation = key;
+        break;
+
+      case 'subtraction':
+        operation = key;
+        break;
+
+      case 'addition':
+        operation = key;
+        break;
+
+      case 'equals':
+        operation = key;
         break;
     }
   }
@@ -51,4 +73,11 @@ function clearAll() {
 //Clears one number
 function clear() {
   screen.innerHTML = screen.innerHTML.slice(0, -1);
+}
+
+//Operates the numbers according to the operation symbol
+function operate(number, operation) {
+  if (operation != '') {
+    //To do: what will happen if operation is differnt to null
+  }
 }
