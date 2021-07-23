@@ -8,7 +8,7 @@ appDiv.innerHTML = `<h1>JS Starter: This is fun :)</h1>`;
 const keyboard = document.getElementById('keyboard');
 const screen = document.getElementById('screen');
 let operation = '';
-let restult = 0;
+let result = 0;
 
 /*
 keyboard.addEventListener('click', function(event){
@@ -37,25 +37,8 @@ function keyPressed(event) {
         clear();
         break;
 
-      case 'division':
-        operation = key;
-        break;
-
-      case 'multiplication':
-        operation = key;
-        break;
-
-      case 'subtraction':
-        operation = key;
-        break;
-
-      case 'addition':
-        operation = key;
-        break;
-
-      case 'equals':
-        operation = key;
-        break;
+      default:
+        operate(parseInt(screen.innerHTML), key);
     }
   }
 }
@@ -76,8 +59,41 @@ function clear() {
 }
 
 //Operates the numbers according to the operation symbol
-function operate(number, operation) {
+function operate(number, symbol) {
   if (operation != '') {
-    //To do: what will happen if operation is differnt to null
+    switch (operation) {
+      case 'division':
+        //result /= number;
+        number = result/number;
+        break;
+
+      case 'multiplication':
+        //result *= number;
+        number = result*number;
+        break;
+
+      case 'subtraction':
+        //result -= number;
+        number = result-number;
+        break;
+
+      case 'addition':
+        //result += number;
+        number = result+number;
+        break;
+
+      case 'equals':
+        operate(number, operation);
+        break;
+    }
+    
   }
+  result=number;
+    if(symbol== "=")operation = '';
+    else{
+      operation=symbol;
+    }
+  
+  screen.innerHTML= result;
+
 }
