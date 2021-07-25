@@ -23,7 +23,7 @@ keyboard.addEventListener('click', function(event) {
 
 //Function called every time a key is pressed
 function keyPressed(event) {
-  console.log(`You clicked on ${event.target.innerText}`);
+  //console.log(`You clicked on ${event.target.innerText}`);
   if (!isNaN(parseInt(event.target.innerHTML))) {
     writeNumbers(event.target.innerHTML);
   } else {
@@ -51,6 +51,8 @@ function writeNumbers(number) {
 //Clears the whole screen
 function clearAll() {
   screen.innerHTML = '';
+  result = 0;
+  operation = '';
 }
 
 //Clears one number
@@ -64,36 +66,35 @@ function operate(number, symbol) {
     switch (operation) {
       case 'division':
         //result /= number;
-        number = result/number;
+        number = result / number;
         break;
 
       case 'multiplication':
         //result *= number;
-        number = result*number;
+        number = result * number;
+        console.log(number);
         break;
 
       case 'subtraction':
         //result -= number;
-        number = result-number;
+        number = result - number;
         break;
 
       case 'addition':
         //result += number;
-        number = result+number;
+        number = result + number;
         break;
 
       case 'equals':
         operate(number, operation);
         break;
     }
-    
   }
-  result=number;
-    if(symbol== "=")operation = '';
-    else{
-      operation=symbol;
-    }
-  
-  screen.innerHTML= result;
+  result = number;
+  if (symbol == '=') operation = '';
+  else {
+    operation = symbol;
+  }
 
+  screen.innerHTML = '';
 }
