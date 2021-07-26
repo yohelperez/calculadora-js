@@ -26,7 +26,6 @@ keyboard.addEventListener('click', function(event) {
 function keyPressed(event) {
   //console.log(`You clicked on ${event.target.innerText}`);
   if (!isNaN(parseInt(event.target.innerHTML))) {
-    //if (del) clearAll();
     writeNumbers(event.target.innerHTML);
   } else {
     let key = event.target.id;
@@ -47,7 +46,9 @@ function keyPressed(event) {
 
 //Writes numbers on the screen
 function writeNumbers(number) {
+  if (del) screen.innerHTML = '';
   screen.innerHTML += number;
+  screen.innerHTML = parseFloat(screen.innerHTML);
   del = false;
 }
 
