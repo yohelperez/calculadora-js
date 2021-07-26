@@ -9,6 +9,7 @@ const keyboard = document.getElementById('keyboard');
 const screen = document.getElementById('screen');
 let operation = '';
 let result = 0;
+let del = false;
 
 /*
 keyboard.addEventListener('click', function(event){
@@ -25,6 +26,7 @@ keyboard.addEventListener('click', function(event) {
 function keyPressed(event) {
   //console.log(`You clicked on ${event.target.innerText}`);
   if (!isNaN(parseInt(event.target.innerHTML))) {
+    //if (del) clearAll();
     writeNumbers(event.target.innerHTML);
   } else {
     let key = event.target.id;
@@ -46,6 +48,7 @@ function keyPressed(event) {
 //Writes numbers on the screen
 function writeNumbers(number) {
   screen.innerHTML += number;
+  del = false;
 }
 
 //Clears the whole screen
@@ -72,7 +75,6 @@ function operate(number, symbol) {
       case 'multiplication':
         //result *= number;
         number = result * number;
-        console.log(number);
         break;
 
       case 'subtraction':
@@ -86,15 +88,17 @@ function operate(number, symbol) {
         break;
 
       case 'equals':
+        console.log('equial');
         operate(number, operation);
         break;
     }
   }
   result = number;
-  if (symbol == '=') operation = '';
+  if (symbol == 'equals') operation = '';
   else {
     operation = symbol;
   }
 
-  screen.innerHTML = '';
+  screen.innerHTML = result;
+  del = true;
 }
