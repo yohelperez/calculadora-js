@@ -3,19 +3,14 @@ import './style.css';
 
 // Write Javascript code!
 const appDiv = document.getElementById('app');
-appDiv.innerHTML = `<h1>JS Starter: This is fun :)</h1>`;
+//appDiv.innerHTML = `<h1>JS Starter: This is fun :)</h1>`;
+appDiv.innerHTML = `<h1>Basic Calculator</h1>`;
 
 const keyboard = document.getElementById('keyboard');
 const screen = document.getElementById('screen');
 let operation = '';
 let result = 0;
 let del = false;
-
-/*
-keyboard.addEventListener('click', function(event){
-  alert(`You clicked on ${event.target.innerText}`);
-});
-*/
 
 //Creates the listener on the keyboard
 keyboard.addEventListener('click', function(event) {
@@ -24,7 +19,6 @@ keyboard.addEventListener('click', function(event) {
 
 //Function called every time a key is pressed
 function keyPressed(event) {
-  //console.log(`You clicked on ${event.target.innerText}`);
   if (!isNaN(parseInt(event.target.innerHTML))) {
     writeNumbers(event.target.innerHTML);
   } else {
@@ -69,22 +63,18 @@ function operate(number, symbol) {
   if (operation != '') {
     switch (operation) {
       case 'division':
-        //result /= number;
         number = result / number;
         break;
 
       case 'multiplication':
-        //result *= number;
         number = result * number;
         break;
 
       case 'subtraction':
-        //result -= number;
         number = result - number;
         break;
 
       case 'addition':
-        //result += number;
         number = result + number;
         break;
 
